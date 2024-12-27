@@ -53,7 +53,7 @@ sbt "demon startDev"
 ### To start all services defined in config
 
 ```
-sbt "demon stop"
+sbt "demon stopAll"
 ```
 
 ### To list all services defined in config - WIP

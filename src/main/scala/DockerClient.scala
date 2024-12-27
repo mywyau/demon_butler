@@ -62,7 +62,7 @@ class DockerClientImpl[F[_] : Async : Concurrent : Logger : Console : Processes]
               // Progress indicator tied to the SignallingRef
               progressIndicator =
                 fs2.Stream
-                  .awakeEvery[F](1.second)
+                  .awakeEvery[F](2.second)
                   .as(s"[${serviceConfig.name}] - Building containers...") // Ensure it emits String
                   //                .evalMap(_ => Logger[F].info(s"[${serviceConfig.name}] - Building containers..."))
                   .interruptWhen(isRunning.discrete.filter(!_))
