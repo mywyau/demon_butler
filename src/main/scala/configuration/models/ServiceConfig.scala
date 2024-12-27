@@ -14,8 +14,3 @@ case class ServiceConfig(
                           path: String // Directory path of the service
                         ) derives ConfigReader
 
-//object ServiceConfig {
-//
-//  implicit val availabilityEncoder: Encoder[ServiceConfig] = deriveEncoder[ServiceConfig]
-//}
-

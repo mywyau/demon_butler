@@ -29,10 +29,8 @@ object AppDependencies {
 
   // Test dependencies
   val test: Seq[ModuleID] = Seq(
-    "org.scalatest" %% "scalatest" % scalatestVersion % Test,
-    "org.tpolecat" %% "doobie-scalatest" % doobieVersion % Test,
     "com.disneystreaming" %% "weaver-cats" % weaverVersion % Test,
-    "com.disneystreaming" %% "weaver-scalacheck" % "0.7.6" % Test,
+    "com.disneystreaming" %% "weaver-scalacheck" % "0.7.6" % Test
   )
 
   // Integration test dependencies

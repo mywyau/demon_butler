@@ -7,7 +7,3 @@ import io.circe.{Decoder, Encoder}
 import pureconfig.ConfigReader
 
 case class AppConfig(services: List[ServiceConfig]) derives ConfigReader
-
-//object AppConfig {
-//  implicit val availabilityDecoder: Decoder[AppConfig] = deriveDecoder[AppConfig]
-//}
