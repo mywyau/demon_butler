@@ -5,6 +5,8 @@ import scala.sys.process.*
 
 trait DockerClientAlgebra[F[_]] {
 
+  def runDev(build: Boolean): F[Unit]
+
   def buildImage(imageName: String, contextPath: String): F[Unit]
 
   def createContainer(image: String, containerName: String, ports: List[String]): F[Unit]
@@ -19,6 +21,16 @@ trait DockerClientAlgebra[F[_]] {
 }
 
 class DockerClientImpl[F[_] : Sync] extends DockerClientAlgebra[F] {
+
+  override def runDev(build: Boolean): F[Unit] = Sync[F].delay {
+    val buildFlag = if (build) "--build" else ""
+    val command = Seq("docker-compose", "up", "nextjs-dev", buildFlag, contextPath).filter(_.nonEmpty)
+    println(s"Running command: ${command.mkString(" ")}")
+    val exitCode = command.!
+    if (exitCode != 0) {
+      throw new RuntimeException(s"Failed to run docker-compose up for $service (exit code: $exitCode)")
+    }
+  }
 
   override def buildImage(imageName: String, contextPath: String): F[Unit] =
     Sync[F].delay {
