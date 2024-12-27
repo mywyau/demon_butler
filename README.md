@@ -11,8 +11,37 @@ We wanted a system to coordinate and run all desired microserice containers easi
 - A configurable system for Microservices, we should be able to add more microservices as a configuration file to run as a set.
 - Must be possible to run in parallel to help speed up processing of building containers
 - Must run container app code from a central directory/location on the system. 
-- Must be able to close 
+- Must be able to stop and remove docker containers via a simple command
+- Must have some notification or progress system console output for UX
 
+### To start all services defined in config
+
+```
+sbt "run startDev"
+```
+
+### To run a single service defined in config
+
+```
+sbt "run startDev"
+```
+
+### To start all services defined in config - WIP
+
+```
+sbt "run stop"
+```
+
+### To remove all services defined in config - WIP
+
+```
+sbt "run remove"
+```
+
+### To list all services defined in config - WIP
+```
+sbt "run list"
+```
 
 
 
