@@ -4,7 +4,7 @@ ThisBuild / parallelExecution := true
 
 lazy val root = (project in file("."))
   .settings(
-    name := "pistachio",
+    name := "demon_butler",
     libraryDependencies ++= AppDependencies.compile ++ AppDependencies.test,
     Compile / run / fork := true,
     Compile / unmanagedSourceDirectories += baseDirectory.value / "src" / "main" / "scala"
@@ -13,7 +13,7 @@ lazy val root = (project in file("."))
 lazy val it = (project in file("it"))
   .dependsOn(root) // Depend on root
   .settings(
-    name := "pistachio-it",
+    name := "demon_butler-it",
     libraryDependencies ++= AppDependencies.integrationTest,
     fork := true,
     parallelExecution := true,
