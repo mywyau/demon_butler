@@ -4,61 +4,27 @@ import configuration.models.*
 
 object AppConfigConstants {
 
-  val appServerConfig =
-    ServerConfig(
-      host = "0.0.0.0",
-      port = 1010
+  val frontend1ServiceConfig =
+    ServiceConfig(
+      name = "wander",
+      containerName = "wander-container",
+      image = "wander-frontend",
+      ports = List("3000:3000"),
+      path = "/Users/michaelyau/desk_booking/frontend/wander"
     )
 
-  val integrationSpecServerConfig =
-    ServerConfig(
-      host = "127.0.0.1",
-      port = 9999,
+  val frontend2ServiceConfig =
+    ServiceConfig(
+      name = "frontend2",
+      containerName = "frontend-container-2",
+      image = "your-frontend-service-2",
+      ports = List("3001:3001"),
+      path = "/path/to/frontend2"
     )
-
-  val integrationPostgresqlConfig =
-    PostgresqlConfig(
-      dbName = "shared_test_db",
-      host = "localhost",
-      port = 5432,
-      username = "shared_user",
-      password = "share"
-    )
-
-  val containerPostgresqlConfig =
-    PostgresqlConfig(
-      dbName = "shared_test_db",
-      host = "postgresql",
-      port = 5432,
-      username = "shared_user",
-      password = "share"
-    )
-
-  val integrationSpecConfig =
-    IntegrationSpecConfig(
-      serverConfig = integrationSpecServerConfig,
-      postgresqlConfig = integrationPostgresqlConfig
-    )
-
-  val localConfig = {
-    LocalConfig(
-      serverConfig = appServerConfig,
-      postgresqlConfig = containerPostgresqlConfig
-    )
-  }
-
-  val featureSwitches = {
-    FeatureSwitches(
-      useDockerHost = true
-    )
-  }
 
   val appConfig =
     AppConfig(
-      featureSwitches = featureSwitches,
-      localConfig = localConfig,
-      integrationSpecConfig = integrationSpecConfig
+      services = List(frontend1ServiceConfig, frontend2ServiceConfig)
     )
-
 
 }

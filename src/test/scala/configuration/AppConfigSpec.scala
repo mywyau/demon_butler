@@ -15,9 +15,7 @@ object AppConfigSpec extends SimpleIOSuite {
     } yield {
       expect.all(
         config == appConfig,
-        config.featureSwitches == appConfig.featureSwitches,
-        config.localConfig == appConfig.localConfig,
-        config.integrationSpecConfig == appConfig.integrationSpecConfig
+        config.services == appConfig.services,
       )
     }
   }

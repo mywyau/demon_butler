@@ -1,7 +1,7 @@
 package configuration
 
 import cats.effect.Sync
-import configuration.models.{AppConfig, ServicesConfig}
+import configuration.models.AppConfig
 import pureconfig.ConfigSource
 
 trait ConfigReaderAlgebra[F[_]] {
