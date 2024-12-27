@@ -1,56 +1,63 @@
-import cats.effect.{ExitCode, IO, IOApp}
-import cats.implicits.*
+import cats.effect.{ExitCode, IO, IOApp, Sync}
+import cats.syntax.all.*
 import configuration.models.{AppConfig, ServiceConfig}
+import io.circe.generic.auto.*
 import pureconfig.ConfigSource
 
-object ServiceRunner extends IOApp {
+class ServiceRunner[F[_] : Sync](docker: DockerClientAlgebra[F], config: AppConfig) {
 
-  def buildAndRunService(docker: DockerClient, service: ServiceConfig): IO[Unit] =
-    IO {
-      println(s"Building and running service: ${service.name}")
-      docker.buildImage(service.path, service.image)
-      docker.createContainer(service.image, service.containerName, service.ports)
-      docker.startContainer(service.containerName)
-      println(s"Service ${service.name} is running.")
-    }
+  def buildAndRunService(service: ServiceConfig): F[Unit] =
+    for {
+      _ <- Sync[F].delay(println(s"Building and running service: ${service.name}"))
+      _ <- docker.buildImage(service.image, service.path)
+      _ <- docker.createContainer(service.image, service.containerName, service.ports)
+      _ <- docker.startContainer(service.containerName)
+      _ <- Sync[F].delay(println(s"Service ${service.name} is running."))
+    } yield ()
 
-  def stopAndRemoveService(docker: DockerClient, service: ServiceConfig): IO[Unit] =
-    IO {
-      println(s"Stopping and removing service: ${service.name}")
-      docker.stopContainer(service.containerName)
-      docker.removeContainer(service.containerName)
-      println(s"Service ${service.name} has been stopped and removed.")
-    }
+  def stopAndRemoveService(service: ServiceConfig): F[Unit] =
+    for {
+      _ <- Sync[F].delay(println(s"Stopping and removing service: ${service.name}"))
+      _ <- docker.stopContainer(service.containerName)
+      _ <- docker.removeContainer(service.containerName)
+      _ <- Sync[F].delay(println(s"Service ${service.name} has been stopped and removed."))
+    } yield ()
 
-  def listServices(docker: DockerClient): IO[Unit] =
-    IO {
-      println("Listing all containers:")
-      println(docker.listContainers())
-    }
+  def listServices: F[Unit] =
+    for {
+      _ <- Sync[F].delay(println("Listing all containers:"))
+      containers <- docker.listContainers()
+      _ <- Sync[F].delay(println(containers))
+    } yield ()
+}
+
+object ServiceRunnerApp extends IOApp {
 
   override def run(args: List[String]): IO[ExitCode] = {
 
-    val docker = new DockerClient()
-
-    // Load configuration
+    // Initialize the DockerClient and Config
+    val dockerClient = new DockerClientImpl[IO]
     val config = ConfigSource.default.loadOrThrow[AppConfig]
 
-    // Parse command-line arguments
+    // Create the ServiceRunner
+    val serviceRunner = new ServiceRunner[IO](dockerClient, config)
+
+    // Parse command-line arguments and execute commands
     args match {
       case "start" :: serviceName :: Nil =>
         config.services.find(_.name == serviceName) match {
-          case Some(service) => buildAndRunService(docker, service).as(ExitCode.Success)
+          case Some(service) => serviceRunner.buildAndRunService(service).as(ExitCode.Success)
           case None => IO(println(s"Service $serviceName not found")).as(ExitCode.Error)
         }
 
       case "stop" :: serviceName :: Nil =>
         config.services.find(_.name == serviceName) match {
-          case Some(service) => stopAndRemoveService(docker, service).as(ExitCode.Success)
+          case Some(service) => serviceRunner.stopAndRemoveService(service).as(ExitCode.Success)
           case None => IO(println(s"Service $serviceName not found")).as(ExitCode.Error)
         }
 
       case "list" :: Nil =>
-        listServices(docker).as(ExitCode.Success)
+        serviceRunner.listServices.as(ExitCode.Success)
 
       case _ =>
         IO(println("Usage: start <serviceName> | stop <serviceName> | list")).as(ExitCode.Error)

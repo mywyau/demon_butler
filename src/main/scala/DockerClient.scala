@@ -1,18 +1,24 @@
-import scala.sys.process._
 import cats.effect.Sync
-import cats.syntax.all._
-import scala.sys.process._
+import cats.syntax.all.*
+
+import scala.sys.process.*
 
 trait DockerClientAlgebra[F[_]] {
+
   def buildImage(imageName: String, contextPath: String): F[Unit]
+
   def createContainer(image: String, containerName: String, ports: List[String]): F[Unit]
+
   def startContainer(containerName: String): F[Unit]
+
   def stopContainer(containerName: String): F[Unit]
+
   def removeContainer(containerName: String): F[Unit]
+
   def listContainers(): F[String]
 }
 
-class DockerClientImpl[F[_]: Sync] extends DockerClientAlgebra[F] {
+class DockerClientImpl[F[_] : Sync] extends DockerClientAlgebra[F] {
 
   override def buildImage(imageName: String, contextPath: String): F[Unit] =
     Sync[F].delay {
@@ -58,4 +64,9 @@ class DockerClientImpl[F[_]: Sync] extends DockerClientAlgebra[F] {
     Sync[F].delay {
       Seq("docker", "ps", "-a").!!
     }
+}
+
+
+object DockerClient {
+  def apply[F[_] : Sync](): DockerClientAlgebra[F] = new DockerClientImpl[F]
 }
