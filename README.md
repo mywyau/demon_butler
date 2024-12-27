@@ -8,14 +8,22 @@ Please update
 application.conf
 ```
 
-with your systems absolute base path to where you store your
+with your systems absolute **Base Path** to where you store your
 projects.
 
-e.g.
+### E.g.
 
+### Absolute Path
 ```
-/Users/michaelyau/desk_booking
+/Users/michaelyau/desk_booking/frontend/wander
 ```
+
+### Base Path
+```
+/Users/michaelyau/desk_booking/frontend
+```
+
+The config should pick up the project file name e.g. wander and start the docker-compose script there.
 
 
 At the moment we are containerising our app frontend and backend microservices using docker and docker compose.
