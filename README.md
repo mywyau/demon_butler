@@ -1,6 +1,22 @@
 # demon_butler
 
-Service to help manage and run my other app micro-services using docker
+Service to help manage and run my other app microservices using docker.
+
+Please update 
+
+```
+application.conf
+```
+
+with your systems absolute base path to where you store your
+projects.
+
+e.g.
+
+```
+/Users/michaelyau/desk_booking
+```
+
 
 At the moment we are containerising our app frontend and backend microservices using docker and docker compose.
 
