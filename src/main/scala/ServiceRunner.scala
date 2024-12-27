@@ -1,3 +1,4 @@
+
 import cats.effect.*
 import cats.effect.std.Console
 import cats.syntax.all.*
@@ -29,10 +30,10 @@ object ServiceRunnerApp extends IOApp {
       case Right(config) => Sync[F].pure(config)
     }
 
-  private def createDockerClient[F[_] : Async : Logger : Console : Processes](config: AppConfig): DockerClientImpl[F] =
+  private def createDockerClient[F[_] : Async : Concurrent : Logger : Console : Processes](config: AppConfig): DockerClientImpl[F] =
     new DockerClientImpl[F](config)
 
-  private def createServiceRunner[F[_] : Async : Logger : Console : Processes](docker: DockerClientAlgebra[F], config: AppConfig): ServiceRunner[F] =
+  private def createServiceRunner[F[_] : Async : Concurrent : Logger : Console : Processes](docker: DockerClientAlgebra[F], config: AppConfig): ServiceRunner[F] =
     new ServiceRunner[F](docker, config)
 
   override def run(args: List[String]): IO[ExitCode] = {
