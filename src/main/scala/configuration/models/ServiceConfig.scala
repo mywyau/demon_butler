@@ -11,6 +11,6 @@ case class ServiceConfig(
                           containerName: String,
                           image: String,
                           ports: List[String],
-                          path: String // Directory path of the service
+                          path: String
                         ) derives ConfigReader
 
