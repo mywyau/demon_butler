@@ -3,6 +3,7 @@ import scala.jdk.StreamConverters._
 
 class PathCalculationService {
 
+  // TODO: Impove path deduction capabilities
 
   def extractHostPath(): String = {
     val userHome = System.getProperty("user.home")

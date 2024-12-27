@@ -8,17 +8,6 @@ import org.typelevel.log4cats.Logger
 import org.typelevel.log4cats.slf4j.Slf4jLogger
 import pureconfig.ConfigSource
 
-trait ServiceRunnerAlgebra[F[_]] {
-  def runDockerCompose(service: ServiceConfig): F[Unit]
-}
-
-class ServiceRunner[F[_] : Sync : Logger](docker: DockerClientAlgebra[F], config: AppConfig)
-  extends ServiceRunnerAlgebra[F] {
-
-  override def runDockerCompose(service: ServiceConfig): F[Unit] =
-    docker.startAllFrontendContainers(service)
-}
-
 object ServiceRunnerApp extends IOApp {
 
   private def loadConfig[F[_] : Sync : Logger]: F[AppConfig] =
@@ -32,8 +21,8 @@ object ServiceRunnerApp extends IOApp {
   private def createDockerClient[F[_] : Async : Concurrent : Logger : Console : Processes](config: AppConfig): DockerClientImpl[F] =
     new DockerClientImpl[F](config)
 
-  private def createServiceRunner[F[_] : Async : Concurrent : Logger : Console : Processes](docker: DockerClientAlgebra[F], config: AppConfig): ServiceRunner[F] =
-    new ServiceRunner[F](docker, config)
+  private def createServiceRunner[F[_] : Async : Concurrent : Logger : Console : Processes](docker: DockerClientAlgebra[F], config: AppConfig): ServiceRunnerImpl[F] =
+    new ServiceRunnerImpl[F](docker, config)
 
   override def run(args: List[String]): IO[ExitCode] = {
 
