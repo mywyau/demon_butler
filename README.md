@@ -17,30 +17,24 @@ We wanted a system to coordinate and run all desired microserice containers easi
 ### To start all services defined in config
 
 ```
-sbt "run startDev"
+sbt "demon startDev"
 ```
 
-### To run a single service defined in config
+### To run a single service defined in config - TODO
 
 ```
-sbt "run startDev"
+sbt "demon startDev"
 ```
 
-### To start all services defined in config - WIP
+### To start all services defined in config
 
 ```
-sbt "run stop"
-```
-
-### To remove all services defined in config - WIP
-
-```
-sbt "run remove"
+sbt "demon stop"
 ```
 
 ### To list all services defined in config - WIP
 ```
-sbt "run list"
+sbt "demon list"
 ```
 
 

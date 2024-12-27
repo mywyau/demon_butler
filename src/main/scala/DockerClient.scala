@@ -1,7 +1,7 @@
 //import cats.effect.Sync
 
 import cats.effect.std.Console
-import cats.effect.syntax.spawn._
+import cats.effect.syntax.spawn.*
 import cats.effect.{Async, Concurrent}
 import cats.syntax.all.*
 import configuration.models.*
@@ -14,13 +14,13 @@ import scala.concurrent.duration.*
 
 trait DockerClientAlgebra[F[_]] {
 
-  def runDockerComposeCommand(serviceConfig: ServiceConfig): F[Unit]
+  def startAllFrontendContainers(serviceConfig: ServiceConfig): F[Unit]
 
-  //  def stopContainer(containerName: String): F[Unit]
-  //
-  //  def removeContainer(containerName: String): F[Unit]
-  //
-  //  def listContainers(): F[String]
+  def stopContainer(serviceConfig: ServiceConfig): F[Unit]
+
+  def stopAllContainers(): F[Unit]
+
+  def listContainers(): F[Unit]
 }
 
 class DockerClientImpl[F[_] : Async : Concurrent : Logger : Console : Processes](config: AppConfig) extends DockerClientAlgebra[F] {
@@ -34,9 +34,9 @@ class DockerClientImpl[F[_] : Async : Concurrent : Logger : Console : Processes]
     List("-f", s"$projectPath/${serviceConfig.fileName}") ++ commandParts.tail
   }
 
-  override def runDockerComposeCommand(serviceConfig: ServiceConfig): F[Unit] = {
+  override def startAllFrontendContainers(serviceConfig: ServiceConfig): F[Unit] = {
     val basePath: String = determineBasePath(serviceConfig)
-    val projectPath = s"$basePath${serviceConfig.projectPath}"
+    val projectPath = s"$basePath/${serviceConfig.projectPath}"
     val commandParts = serviceConfig.command.split(" ").toList
 
     if (commandParts.isEmpty) {
@@ -93,48 +93,55 @@ class DockerClientImpl[F[_] : Async : Concurrent : Logger : Console : Processes]
     }
   }
 
+  override def stopContainer(serviceConfig: ServiceConfig): F[Unit] = {
+    val basePath = determineBasePath(serviceConfig)
+    val projectPath = s"$basePath/${serviceConfig.projectPath}"
+    val command = List("docker-compose", "-f", s"$projectPath/${serviceConfig.fileName}", "down")
 
-  //  override def runDockerComposeCommand(serviceConfig: ServiceConfig): F[Unit] = {
-  //    val basePath = if (serviceConfig.name.contains("frontend")) config.frontendBasePath else config.backendBasePath
-  //    val projectPath = s"$basePath${serviceConfig.projectPath}"
-  //
-  //    val commandParts = serviceConfig.command.split(" ").toList
-  //
-  //    if (commandParts.isEmpty) {
-  //      Async[F].raiseError(new IllegalArgumentException("Command is empty in service configuration"))
-  //    } else {
-  //      val baseCommand = commandParts.head
-  //      val args = List("-f", s"$projectPath/${serviceConfig.fileName}") ++ commandParts.tail
-  //
-  //      Logger[F].info(s"Running command: $baseCommand ${args.mkString(" ")}") *>
-  //        ProcessBuilder(baseCommand, args: _*)
-  //          .spawn[F]
-  //          .use { process =>
-  //            val stdoutStream = process.stdout.through(fs2.text.utf8.decode).through(fs2.text.lines)
-  //
-  //            val progressIndicator =
-  //              fs2.Stream
-  //                .awakeEvery[F](1.second)
-  //                .as(s"[${serviceConfig.name}] - Building containers...") // Transform progress updates to Strings
-  //
-  //            // Combine the process output with progress updates
-  //            stdoutStream
-  //              .merge(progressIndicator)
-  //              .evalMap(line => Logger[F].info(line))
-  //              .compile
-  //              .drain *>
-  //              process.exitValue.flatMap { code =>
-  //                if (code == 0) {
-  //                  Logger[F].info(s"Successfully ran docker compose for service: ${serviceConfig.name}")
-  //                } else {
-  //                  Logger[F].error(s"Failed to run docker compose for service: ${serviceConfig.name} with exit code $code") *>
-  //                    Async[F].raiseError(new RuntimeException(s"Failed to run docker compose for service: ${serviceConfig.name} with exit code $code"))
-  //                }
-  //              }
-  //          }
-  //    }
-  //  }
+    Logger[F].info(s"Stopping service: ${serviceConfig.name}") *>
+      ProcessBuilder(command.head, command.tail: _*)
+        .spawn[F]
+        .use { process =>
+          process.exitValue.flatMap { exitCode =>
+            if (exitCode == 0) {
+              Logger[F].info(s"Successfully stopped service: ${serviceConfig.name}")
+            } else {
+              Logger[F].error(s"Failed to stop service: ${serviceConfig.name} with exit code $exitCode") *>
+                Async[F].raiseError(new RuntimeException(s"Failed to stop service: ${serviceConfig.name} with exit code $exitCode"))
+            }
+          }
+        }
+  }
 
+  override def stopAllContainers(): F[Unit] = {
+    Logger[F].info("Stopping all containers") *>
+      config.services.traverse(stopContainer).void // Traverse all services and stop each
+  }
+
+  override def listContainers(): F[Unit] = {
+    val command = List("docker", "ps", "-a")
+
+    Logger[F].info(s"Listing all Docker containers") *>
+      ProcessBuilder(command.head, command.tail: _*)
+        .spawn[F]
+        .use { process =>
+          // Capture and process stdout
+          val outputStream = process.stdout
+            .through(fs2.text.utf8.decode)
+            .through(fs2.text.lines)
+            .evalMap(line => Console[F].println(line)) // Print each line to the console
+
+          outputStream.compile.drain *> // Ensure the stream is fully consumed
+            process.exitValue.flatMap { exitCode =>
+              if (exitCode == 0) {
+                Logger[F].info(s"Successfully listed all Docker containers")
+              } else {
+                Logger[F].error(s"Failed to list Docker containers, with exit code: $exitCode") *>
+                  Async[F].raiseError(new RuntimeException(s"Failed to list Docker containers, with exit code: $exitCode"))
+              }
+            }
+        }
+  }
 }
 
 object DockerClient {

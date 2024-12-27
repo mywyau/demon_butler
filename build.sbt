@@ -48,3 +48,5 @@ assembly / assemblyExcludedJars := {
     val cp = (assembly / fullClasspath).value
     cp.filter(_.data.getName.contains("-tests.jar"))
 }
+
+addCommandAlias("demon", "run")
