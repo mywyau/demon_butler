@@ -2,11 +2,21 @@ import cats.effect.{ExitCode, IO, IOApp, Sync}
 import cats.syntax.all.*
 import configuration.models.{AppConfig, ServiceConfig}
 import io.circe.generic.auto.*
-import pureconfig.ConfigSource
+import pureconfig.error.ConfigReaderFailures
+import pureconfig.{ConfigReader, ConfigSource}
 
-class ServiceRunner[F[_] : Sync](docker: DockerClientAlgebra[F], config: AppConfig) {
+trait ServiceRunnerAlgebra[F[_]] {
 
-  def buildAndRunService(service: ServiceConfig): F[Unit] =
+  def buildAndRunService(service: ServiceConfig): F[Unit]
+
+  def stopAndRemoveService(service: ServiceConfig): F[Unit]
+
+  def listServices: F[Unit]
+}
+
+class ServiceRunner[F[_] : Sync](docker: DockerClientAlgebra[F], config: AppConfig) extends ServiceRunnerAlgebra[F] {
+
+  override def buildAndRunService(service: ServiceConfig): F[Unit] =
     for {
       _ <- Sync[F].delay(println(s"Building and running service: ${service.name}"))
       _ <- docker.buildImage(service.image, service.path)
@@ -15,7 +25,7 @@ class ServiceRunner[F[_] : Sync](docker: DockerClientAlgebra[F], config: AppConf
       _ <- Sync[F].delay(println(s"Service ${service.name} is running."))
     } yield ()
 
-  def stopAndRemoveService(service: ServiceConfig): F[Unit] =
+  override def stopAndRemoveService(service: ServiceConfig): F[Unit] =
     for {
       _ <- Sync[F].delay(println(s"Stopping and removing service: ${service.name}"))
       _ <- docker.stopContainer(service.containerName)
@@ -23,7 +33,7 @@ class ServiceRunner[F[_] : Sync](docker: DockerClientAlgebra[F], config: AppConf
       _ <- Sync[F].delay(println(s"Service ${service.name} has been stopped and removed."))
     } yield ()
 
-  def listServices: F[Unit] =
+  override def listServices: F[Unit] =
     for {
       _ <- Sync[F].delay(println("Listing all containers:"))
       containers <- docker.listContainers()
@@ -33,34 +43,41 @@ class ServiceRunner[F[_] : Sync](docker: DockerClientAlgebra[F], config: AppConf
 
 object ServiceRunnerApp extends IOApp {
 
+  private def loadConfig[F[_] : Sync]: F[AppConfig] =
+    Sync[F].fromEither(
+      ConfigSource.default.load[AppConfig]
+        .leftMap(failures => new RuntimeException(s"Failed to load configuration: ${failures.toList.mkString(", ")}"))
+    )
+
   override def run(args: List[String]): IO[ExitCode] = {
+    val program =
+      for {
+        config <- loadConfig[IO]
+        dockerClient = new DockerClientImpl[IO]
+        serviceRunner = new ServiceRunner[IO](dockerClient, config)
+        exitCode <- args match {
+          case "start" :: serviceName :: Nil =>
+            config.services.find(_.name == serviceName) match {
+              case Some(service) => serviceRunner.buildAndRunService(service).as(ExitCode.Success)
+              case None => IO(println(s"Service $serviceName not found")).as(ExitCode.Error)
+            }
 
-    // Initialize the DockerClient and Config
-    val dockerClient = new DockerClientImpl[IO]
-    val config = ConfigSource.default.loadOrThrow[AppConfig]
+          case "stop" :: serviceName :: Nil =>
+            config.services.find(_.name == serviceName) match {
+              case Some(service) => serviceRunner.stopAndRemoveService(service).as(ExitCode.Success)
+              case None => IO(println(s"Service $serviceName not found")).as(ExitCode.Error)
+            }
 
-    // Create the ServiceRunner
-    val serviceRunner = new ServiceRunner[IO](dockerClient, config)
+          case "list" :: Nil =>
+            serviceRunner.listServices.as(ExitCode.Success)
 
-    // Parse command-line arguments and execute commands
-    args match {
-      case "start" :: serviceName :: Nil =>
-        config.services.find(_.name == serviceName) match {
-          case Some(service) => serviceRunner.buildAndRunService(service).as(ExitCode.Success)
-          case None => IO(println(s"Service $serviceName not found")).as(ExitCode.Error)
+          case _ =>
+            IO(println("Usage: start <serviceName> | stop <serviceName> | list")).as(ExitCode.Error)
         }
+      } yield exitCode
 
-      case "stop" :: serviceName :: Nil =>
-        config.services.find(_.name == serviceName) match {
-          case Some(service) => serviceRunner.stopAndRemoveService(service).as(ExitCode.Success)
-          case None => IO(println(s"Service $serviceName not found")).as(ExitCode.Error)
-        }
-
-      case "list" :: Nil =>
-        serviceRunner.listServices.as(ExitCode.Success)
-
-      case _ =>
-        IO(println("Usage: start <serviceName> | stop <serviceName> | list")).as(ExitCode.Error)
+    program.handleErrorWith { ex =>
+      IO(println(s"Unexpected error occurred: ${ex.getMessage}")).as(ExitCode.Error)
     }
   }
 }

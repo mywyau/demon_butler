@@ -6,11 +6,11 @@ object AppConfigConstants {
 
   val frontend1ServiceConfig =
     ServiceConfig(
-      name = "frontend1",
-      containerName = "frontend-container-1",
-      image = "your-frontend-service-1",
+      name = "wander",
+      containerName = "wander-container",
+      image = "wander-frontend",
       ports = List("3000:3000"),
-      path = "/path/to/frontend1"
+      path = "/Users/michaelyau/desk_booking/frontend/wander"
     )
 
   val frontend2ServiceConfig =
