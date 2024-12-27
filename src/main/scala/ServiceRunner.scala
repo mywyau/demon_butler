@@ -1,67 +1,22 @@
 import cats.effect.*
+import cats.effect.std.Console
 import cats.syntax.all.*
 import configuration.models.{AppConfig, ServiceConfig}
+import fs2.io.process.*
 import io.circe.generic.auto.*
 import org.typelevel.log4cats.Logger
 import org.typelevel.log4cats.slf4j.Slf4jLogger
 import pureconfig.ConfigSource
 
 trait ServiceRunnerAlgebra[F[_]] {
-
-
-  def runDockerCompose(serviceName: String): F[Unit]
-
-  def buildAndRunService(service: ServiceConfig): F[Unit]
-
-  def stopAndRemoveService(service: ServiceConfig): F[Unit]
-
-  def listServices: F[Unit]
+  def runDockerCompose(service: ServiceConfig): F[Unit]
 }
 
 class ServiceRunner[F[_] : Sync : Logger](docker: DockerClientAlgebra[F], config: AppConfig)
   extends ServiceRunnerAlgebra[F] {
 
-  override def runDockerCompose(): F[Unit] =
-    docker.runDev(build = true)
-
-  override def buildAndRunService(service: ServiceConfig): F[Unit] =
-    for {
-      _ <- Logger[F].info(s"Building and running service: ${service.name}")
-      _ <- docker.buildImage(service.image, service.path)
-        .handleErrorWith { ex =>
-          Logger[F].error(ex)(s"Failed to build image for service ${service.name}")
-        }
-      _ <- docker.createContainer(service.image, service.containerName, service.ports)
-        .handleErrorWith { ex =>
-          Logger[F].error(ex)(s"Failed to create container for service ${service.name}")
-        }
-      _ <- docker.startContainer(service.containerName)
-        .handleErrorWith { ex =>
-          Logger[F].error(ex)(s"Failed to start container for service ${service.name}")
-        }
-      _ <- Logger[F].info(s"Service ${service.name} is now running.")
-    } yield ()
-
-  override def stopAndRemoveService(service: ServiceConfig): F[Unit] =
-    for {
-      _ <- Logger[F].info(s"Stopping and removing service: ${service.name}")
-      _ <- docker.stopContainer(service.containerName)
-        .handleErrorWith { ex =>
-          Logger[F].error(ex)(s"Failed to stop container for service ${service.name}")
-        }
-      _ <- docker.removeContainer(service.containerName)
-        .handleErrorWith { ex =>
-          Logger[F].error(ex)(s"Failed to remove container for service ${service.name}")
-        }
-      _ <- Logger[F].info(s"Service ${service.name} has been stopped and removed.")
-    } yield ()
-
-  override def listServices: F[Unit] =
-    for {
-      _ <- Logger[F].info("Listing all containers:")
-      containers <- docker.listContainers()
-      _ <- Logger[F].info(containers)
-    } yield ()
+  override def runDockerCompose(service: ServiceConfig): F[Unit] =
+    docker.runDockerComposeCommand(service)
 }
 
 object ServiceRunnerApp extends IOApp {
@@ -74,11 +29,11 @@ object ServiceRunnerApp extends IOApp {
       case Right(config) => Sync[F].pure(config)
     }
 
-  private def createDockerClient[F[_] : Sync : Logger]: F[DockerClientAlgebra[F]] =
-    Sync[F].delay(new DockerClientImpl[F])
+  private def createDockerClient[F[_] : Async : Logger : Console : Processes](config: AppConfig): DockerClientImpl[F] =
+    new DockerClientImpl[F](config)
 
-  private def createServiceRunner[F[_] : Sync : Logger](docker: DockerClientAlgebra[F], config: AppConfig): F[ServiceRunnerAlgebra[F]] =
-    Sync[F].pure(new ServiceRunner[F](docker, config))
+  private def createServiceRunner[F[_] : Async : Logger : Console : Processes](docker: DockerClientAlgebra[F], config: AppConfig): ServiceRunner[F] =
+    new ServiceRunner[F](docker, config)
 
   override def run(args: List[String]): IO[ExitCode] = {
 
@@ -87,32 +42,23 @@ object ServiceRunnerApp extends IOApp {
     val program =
       for {
         config <- loadConfig[IO]
-        docker <- createDockerClient[IO]
-        serviceRunner <- createServiceRunner(docker, config)
+        docker = createDockerClient[IO](config)
+        serviceRunner = createServiceRunner(docker, config)
 
         exitCode <- args match {
-          case "start dev" :: Nil =>
-            serviceRunner.runDockerCompose.as(ExitCode.Success)
+          case "startDev" :: Nil =>
+            config.services.parTraverse(serviceRunner.runDockerCompose).as(ExitCode.Success)
 
           case "start" :: serviceName :: Nil =>
             config.services.find(_.name == serviceName) match {
-              case Some(service) => serviceRunner.buildAndRunService(service).as(ExitCode.Success)
+              case Some(service) =>
+                serviceRunner.runDockerCompose(service).as(ExitCode.Success)
               case None =>
                 Logger[IO].warn(s"Service $serviceName not found") *> IO.pure(ExitCode.Error)
             }
-
-          case "stop" :: serviceName :: Nil =>
-            config.services.find(_.name == serviceName) match {
-              case Some(service) => serviceRunner.stopAndRemoveService(service).as(ExitCode.Success)
-              case None =>
-                Logger[IO].warn(s"Service $serviceName not found") *> IO.pure(ExitCode.Error)
-            }
-
-          case "list" :: Nil =>
-            serviceRunner.listServices.as(ExitCode.Success)
 
           case _ =>
-            Logger[IO].error(s"Invalid command: ${args.mkString(" ")}. Usage: start <serviceName> | stop <serviceName> | list") *>
+            Logger[IO].error(s"Invalid command: ${args.mkString(" ")}. Usage: startDev | start <serviceName>") *>
               IO.pure(ExitCode.Error)
         }
       } yield exitCode

@@ -4,16 +4,10 @@ object AppDependencies {
 
   // Define versions for libraries
   val catsCoreVersion = "2.10.0"
-  val catsEffectVersion = "3.5.1"
+  val catsEffectVersion = "3.5.7"
   val http4sVersion = "0.23.28"
-  val doobieVersion = "1.0.0-RC4"
-  val passayVersion = "1.6.1"
-  val jwtCirceVersion = "9.0.5"
-  val redis4catsVersion = "1.7.1"
   val circeVersion = "0.14.7"
-  val scalatestVersion = "3.2.15"
   val weaverVersion = "0.8.3"
-  val flywayVersion = "8.5.0"
 
   // Compile dependencies
   val compile: Seq[ModuleID] = Seq(
@@ -24,6 +18,8 @@ object AppDependencies {
     "io.circe" %% "circe-generic" % circeVersion,
     "io.circe" %% "circe-core" % circeVersion,
     "io.circe" %% "circe-parser" % circeVersion,
+    "co.fs2" %% "fs2-core" % "3.8.0",
+    "co.fs2" %% "fs2-io" % "3.8.0",
     "com.github.pureconfig" %% "pureconfig-core" % "0.17.8"
   )
 

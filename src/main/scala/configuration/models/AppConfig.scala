@@ -6,4 +6,8 @@ import io.circe.syntax.*
 import io.circe.{Decoder, Encoder}
 import pureconfig.ConfigReader
 
-case class AppConfig(services: List[ServiceConfig]) derives ConfigReader
+case class AppConfig(
+                      frontendBasePath: String,
+                      backendBasePath: String,
+                      services: List[ServiceConfig]
+                    ) derives ConfigReader
