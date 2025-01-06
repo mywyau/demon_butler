@@ -1,0 +1,50 @@
+version: "3.9"
+
+services:
+  traefik:
+    image: traefik:v2.10
+    container_name: traefik
+    command:
+      - "--api=true"
+      - "--api.dashboard=true"
+      - "--entrypoints.web.address=:80"
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+    ports:
+      - "80:80"       # HTTP (Traefik routes requests)
+      - "8080:8080"   # Traefik Dashboard
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock" # Allow Traefik to interact with Docker
+      - "./traefik.yml:/etc/traefik/traefik.yml"    # Optional Traefik config
+    networks:
+      - traefik-network
+
+  wander-dev:
+    build:
+      context: ../frontend/wander
+      dockerfile: Dockerfile.dev
+    image: wander-dev:latest
+    container_name: wander-dev
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.wander-dev.rule=Host(`wander.localhost`)"
+      - "traefik.http.services.wander-dev.loadbalancer.server.port=3000"
+    networks:
+      - traefik-network
+
+  reggie-dev:
+    build:
+      context: ../frontend/reggie
+      dockerfile: Dockerfile.dev
+    image: reggie-dev:latest
+    container_name: reggie-dev
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.reggie-dev.rule=Host(`reggie.localhost`)"
+      - "traefik.http.services.reggie-dev.loadbalancer.server.port=3000"
+    networks:
+      - traefik-network
+
+networks:
+  traefik-network:
+    external: true
