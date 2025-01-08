@@ -8,16 +8,23 @@ services:
       - "--api=true"
       - "--api.dashboard=true"
       - "--entrypoints.web.address=:80"
+      - "--entrypoints.websecure.address=:443"
       - "--providers.docker=true"
       - "--providers.docker.exposedbydefault=false"
     ports:
       - "80:80"
+      - "443:443"
       - "8080:8080"
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock"
       - "./traefik.yml:/etc/traefik/traefik.yml"
     networks:
       - traefik-network
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.traefik-dashboard.rule=Host(`traefik.localhost`)"
+      - "traefik.http.routers.traefik-dashboard.service=api@internal"
+      - "traefik.http.routers.traefik-dashboard.entrypoints=web"
 
   wander-dev:
     build:
@@ -29,9 +36,6 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.wander-dev.rule=Host(`wander.localhost`)"
       - "traefik.http.services.wander-dev.loadbalancer.server.port=3000"
-      - "traefik.http.routers.wander-dev.middlewares=shared-cookie-headers"
-    networks:
-      - traefik-network
 
   reggie-dev:
     build:
@@ -43,9 +47,6 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.reggie-dev.rule=Host(`reggie.localhost`)"
       - "traefik.http.services.reggie-dev.loadbalancer.server.port=3000"
-      - "traefik.http.routers.reggie-dev.middlewares=shared-cookie-headers"
-    networks:
-      - traefik-network
 
 networks:
   traefik-network:
