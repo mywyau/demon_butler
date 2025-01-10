@@ -11,3 +11,7 @@ docker-compose -f docker-compose.traefik.yml up -d
 
 # Confirm the status of containers
 docker-compose -f docker-compose.traefik.yml ps
+
+
+
+docker-compose -f docker-compose.yml -f docker-compose.frontend.yml -f docker-compose.backend.yml up -d

@@ -1,0 +1,28 @@
+version: "3.9"
+
+services:
+  pistachio-app:
+    build:
+      context: ../backend/pistachio
+      dockerfile: Dockerfile
+    image: pistachio-app
+    container_name: pistachio-app
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.pistachio.rule=Host(`pistachio.localhost`)"
+      - "traefik.http.services.pistachio.loadbalancer.server.port=1011"
+    networks:
+      - traefik-network
+
+  cashew-app:
+    build:
+      context: ../backend/cashew
+      dockerfile: Dockerfile
+    image: cashew-app
+    container_name: cashew-app
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.cashew.rule=Host(`cashew.localhost`)"
+      - "traefik.http.services.cashew.loadbalancer.server.port=1010"
+    networks:
+      - traefik-network

@@ -99,3 +99,15 @@ We can then add our services new routes from traefik to the hosts file:
 127.0.0.1 wander.localhost
 127.0.0.1 reggie.localhost
 ```
+
+
+## To view the traefik dashboard
+```
+http://traefik.localhost/dashboard/#/
+```
+
+
+prune and clean up hanging images
+```
+docker image prune -f
+```

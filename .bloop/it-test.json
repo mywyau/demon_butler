@@ -1,0 +1,1039 @@
+{
+    "version": "1.4.0",
+    "project": {
+        "name": "it-test",
+        "directory": "/Users/michaelyau/desk_booking/demon_butler/it",
+        "workspaceDir": "/Users/michaelyau/desk_booking/demon_butler",
+        "sources": [
+            "/Users/michaelyau/desk_booking/demon_butler/it/src/test/scala",
+            "/Users/michaelyau/desk_booking/demon_butler/it/src/test/scala-3",
+            "/Users/michaelyau/desk_booking/demon_butler/it/src/test/java",
+            "/Users/michaelyau/desk_booking/demon_butler/it/src/test/scala",
+            "/Users/michaelyau/desk_booking/demon_butler/it/target/scala-3.3.0/src_managed/test"
+        ],
+        "dependencies": [
+            "root",
+            "it"
+        ],
+        "classpath": [
+            "/Users/michaelyau/desk_booking/demon_butler/.bloop/it/scala-3/classes",
+            "/Users/michaelyau/desk_booking/demon_butler/.bloop/root/scala-3/classes",
+            "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala3-library_3/3.3.4/scala3-library_3-3.3.4.jar",
+            "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/com/disneystreaming/weaver-cats_3/0.8.3/weaver-cats_3-0.8.3.jar",
+            "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/http4s/http4s-ember-client_3/0.23.28/http4s-ember-client_3-0.23.28.jar",
+            "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/com/disneystreaming/weaver-scalacheck_3/0.7.6/weaver-scalacheck_3-0.7.6.jar",
+            "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/com/github/pureconfig/pureconfig-core_3/0.17.8/pureconfig-core_3-0.17.8.jar",
+            "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/typelevel/log4cats-slf4j_3/2.7.0/log4cats-slf4j_3-2.7.0.jar",
+            "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/ch/qos/logback/logback-classic/1.5.6/logback-classic-1.5.6.jar",
+            "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/typelevel/cats-core_3/2.11.0/cats-core_3-2.11.0.jar",
+            "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/typelevel/cats-effect_3/3.5.4/cats-effect_3-3.5.4.jar",
+            "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/io/circe/circe-generic_3/0.14.7/circe-generic_3-0.14.7.jar",
+            "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/io/circe/circe-core_3/0.14.7/circe-core_3-0.14.7.jar",
+            "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/io/circe/circe-parser_3/0.14.7/circe-parser_3-0.14.7.jar",
+            "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/co/fs2/fs2-core_3/3.11.0/fs2-core_3-3.11.0.jar",
+            "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/2.13.14/scala-library-2.13.14.jar",
+            "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/com/disneystreaming/weaver-framework_3/0.8.3/weaver-framework_3-0.8.3.jar",
+            "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/com/disneystreaming/weaver-cats-core_3/0.8.3/weaver-cats-core_3-0.8.3.jar",
+            "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/http4s/http4s-ember-core_3/0.23.28/http4s-ember-core_3-0.23.28.jar",
+            "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/http4s/http4s-client_3/0.23.28/http4s-client_3-0.23.28.jar",
+            "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/typelevel/keypool_3/0.4.10/keypool_3-0.4.10.jar",
+            "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/com/disneystreaming/weaver-core_3/0.8.3/weaver-core_3-0.8.3.jar",
+            "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scalacheck/scalacheck_3/1.15.4/scalacheck_3-1.15.4.jar",
+            "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/com/typesafe/config/1.4.3/config-1.4.3.jar",
+            "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/typelevel/log4cats-core_3/2.7.0/log4cats-core_3-2.7.0.jar",
+            "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/slf4j/slf4j-api/2.0.13/slf4j-api-2.0.13.jar",
+            "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/ch/qos/logback/logback-core/1.5.6/logback-core-1.5.6.jar",
+            "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/typelevel/cats-kernel_3/2.11.0/cats-kernel_3-2.11.0.jar",
+            "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/typelevel/cats-effect-kernel_3/3.5.4/cats-effect-kernel_3-3.5.4.jar",
+            "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/typelevel/cats-effect-std_3/3.5.4/cats-effect-std_3-3.5.4.jar",
+            "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/io/circe/circe-numbers_3/0.14.7/circe-numbers_3-0.14.7.jar",
+            "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/io/circe/circe-jawn_3/0.14.7/circe-jawn_3-0.14.7.jar",
+            "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scodec/scodec-bits_3/1.1.38/scodec-bits_3-1.1.38.jar",
+            "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-sbt/test-interface/1.0/test-interface-1.0.jar",
+            "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/junit/junit/4.13.2/junit-4.13.2.jar",
+            "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/http4s/http4s-core_3/0.23.28/http4s-core_3-0.23.28.jar",
+            "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/com/twitter/hpack/1.0.2/hpack-1.0.2.jar",
+            "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/com/eed3si9n/expecty/expecty_3/0.16.0/expecty_3-0.16.0.jar",
+            "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/portable-scala/portable-scala-reflect_2.13/1.1.2/portable-scala-reflect_2.13-1.1.2.jar",
+            "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-reflect/2.13.14/scala-reflect-2.13.14.jar",
+            "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/typelevel/jawn-parser_3/1.5.1/jawn-parser_3-1.5.1.jar",
+            "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar",
+            "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/typelevel/case-insensitive_3/1.4.0/case-insensitive_3-1.4.0.jar",
+            "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/typelevel/cats-parse_3/1.0.0/cats-parse_3-1.0.0.jar",
+            "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/http4s/http4s-crypto_3/0.2.4/http4s-crypto_3-0.2.4.jar",
+            "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/co/fs2/fs2-io_3/3.11.0/fs2-io_3-3.11.0.jar",
+            "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/com/comcast/ip4s-core_3/3.6.0/ip4s-core_3-3.6.0.jar",
+            "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/typelevel/literally_3/1.1.0/literally_3-1.1.0.jar",
+            "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/typelevel/vault_3/3.6.0/vault_3-3.6.0.jar",
+            "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/log4s/log4s_3/1.10.0/log4s_3-1.10.0.jar"
+        ],
+        "out": "/Users/michaelyau/desk_booking/demon_butler/.bloop/it",
+        "classesDir": "/Users/michaelyau/desk_booking/demon_butler/.bloop/it/scala-3/test-classes",
+        "resources": [
+            "/Users/michaelyau/desk_booking/demon_butler/it/src/test/resources",
+            "/Users/michaelyau/desk_booking/demon_butler/it/target/scala-3.3.0/resource_managed/test"
+        ],
+        "scala": {
+            "organization": "org.scala-lang",
+            "name": "scala-compiler",
+            "version": "3.3.0",
+            "options": [
+                
+            ],
+            "jars": [
+                "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala3-library_3/3.3.0/scala3-library_3-3.3.0.jar",
+                "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/2.13.14/scala-library-2.13.14.jar",
+                "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala3-compiler_3/3.3.0/scala3-compiler_3-3.3.0.jar",
+                "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala3-interfaces/3.3.0/scala3-interfaces-3.3.0.jar",
+                "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/tasty-core_3/3.3.0/tasty-core_3-3.3.0.jar",
+                "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/modules/scala-asm/9.4.0-scala-1/scala-asm-9.4.0-scala-1.jar",
+                "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-sbt/compiler-interface/1.3.5/compiler-interface-1.3.5.jar",
+                "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/jline/jline-reader/3.19.0/jline-reader-3.19.0.jar",
+                "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/jline/jline-terminal/3.19.0/jline-terminal-3.19.0.jar",
+                "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/jline/jline-terminal-jna/3.19.0/jline-terminal-jna-3.19.0.jar",
+                "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/com/google/protobuf/protobuf-java/3.7.0/protobuf-java-3.7.0.jar",
+                "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-sbt/util-interface/1.3.0/util-interface-1.3.0.jar",
+                "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/net/java/dev/jna/jna/5.3.1/jna-5.3.1.jar",
+                "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scaladoc_3/3.3.0/scaladoc_3-3.3.0.jar",
+                "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala3-tasty-inspector_3/3.3.0/scala3-tasty-inspector_3-3.3.0.jar",
+                "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/com/vladsch/flexmark/flexmark/0.42.12/flexmark-0.42.12.jar",
+                "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/com/vladsch/flexmark/flexmark-html-parser/0.42.12/flexmark-html-parser-0.42.12.jar",
+                "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/com/vladsch/flexmark/flexmark-ext-anchorlink/0.42.12/flexmark-ext-anchorlink-0.42.12.jar",
+                "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/com/vladsch/flexmark/flexmark-ext-autolink/0.42.12/flexmark-ext-autolink-0.42.12.jar",
+                "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/com/vladsch/flexmark/flexmark-ext-emoji/0.42.12/flexmark-ext-emoji-0.42.12.jar",
+                "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/com/vladsch/flexmark/flexmark-ext-gfm-strikethrough/0.42.12/flexmark-ext-gfm-strikethrough-0.42.12.jar",
+                "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/com/vladsch/flexmark/flexmark-ext-gfm-tables/0.42.12/flexmark-ext-gfm-tables-0.42.12.jar",
+                "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/com/vladsch/flexmark/flexmark-ext-gfm-tasklist/0.42.12/flexmark-ext-gfm-tasklist-0.42.12.jar",
+                "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/com/vladsch/flexmark/flexmark-ext-wikilink/0.42.12/flexmark-ext-wikilink-0.42.12.jar",
+                "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/com/vladsch/flexmark/flexmark-ext-yaml-front-matter/0.42.12/flexmark-ext-yaml-front-matter-0.42.12.jar",
+                "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/nl/big-o/liqp/0.8.2/liqp-0.8.2.jar",
+                "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/jsoup/jsoup/1.14.3/jsoup-1.14.3.jar",
+                "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/com/fasterxml/jackson/dataformat/jackson-dataformat-yaml/2.13.3/jackson-dataformat-yaml-2.13.3.jar",
+                "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/com/vladsch/flexmark/flexmark-util/0.42.12/flexmark-util-0.42.12.jar",
+                "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/com/vladsch/flexmark/flexmark-formatter/0.42.12/flexmark-formatter-0.42.12.jar",
+                "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/nibor/autolink/autolink/0.6.0/autolink-0.6.0.jar",
+                "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/com/vladsch/flexmark/flexmark-jira-converter/0.42.12/flexmark-jira-converter-0.42.12.jar",
+                "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/antlr/antlr4-runtime/4.7.2/antlr4-runtime-4.7.2.jar",
+                "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-annotations/2.13.3/jackson-annotations-2.13.3.jar",
+                "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-core/2.13.3/jackson-core-2.13.3.jar",
+                "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-databind/2.13.3/jackson-databind-2.13.3.jar",
+                "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/com/fasterxml/jackson/datatype/jackson-datatype-jsr310/2.12.1/jackson-datatype-jsr310-2.12.1.jar",
+                "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/ua/co/k/strftime4j/1.0.5/strftime4j-1.0.5.jar",
+                "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/yaml/snakeyaml/1.30/snakeyaml-1.30.jar",
+                "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/com/vladsch/flexmark/flexmark-ext-tables/0.42.12/flexmark-ext-tables-0.42.12.jar",
+                "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/com/vladsch/flexmark/flexmark-ext-ins/0.42.12/flexmark-ext-ins-0.42.12.jar",
+                "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/com/vladsch/flexmark/flexmark-ext-superscript/0.42.12/flexmark-ext-superscript-0.42.12.jar"
+            ],
+            "setup": {
+                "order": "mixed",
+                "addLibraryToBootClasspath": false,
+                "addCompilerToClasspath": false,
+                "addExtraJarsToClasspath": false,
+                "manageBootClasspath": false,
+                "filterLibraryFromClasspath": false
+            },
+            "bridgeJars": [
+                "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala3-sbt-bridge/3.3.0/scala3-sbt-bridge-3.3.0.jar"
+            ]
+        },
+        "java": {
+            "options": [
+                
+            ]
+        },
+        "test": {
+            "frameworks": [
+                {
+                    "names": [
+                        "org.scalacheck.ScalaCheckFramework"
+                    ]
+                },
+                {
+                    "names": [
+                        "org.specs2.runner.Specs2Framework",
+                        "org.specs2.runner.SpecsFramework"
+                    ]
+                },
+                {
+                    "names": [
+                        "org.specs.runner.SpecsFramework"
+                    ]
+                },
+                {
+                    "names": [
+                        "org.scalatest.tools.Framework",
+                        "org.scalatest.tools.ScalaTestFramework"
+                    ]
+                },
+                {
+                    "names": [
+                        "com.novocode.junit.JUnitFramework"
+                    ]
+                },
+                {
+                    "names": [
+                        "munit.Framework"
+                    ]
+                },
+                {
+                    "names": [
+                        "zio.test.sbt.ZTestFramework"
+                    ]
+                },
+                {
+                    "names": [
+                        "weaver.framework.CatsEffect"
+                    ]
+                },
+                {
+                    "names": [
+                        "hedgehog.sbt.Framework"
+                    ]
+                }
+            ],
+            "options": {
+                "excludes": [
+                    
+                ],
+                "arguments": [
+                    
+                ]
+            }
+        },
+        "platform": {
+            "name": "jvm",
+            "config": {
+                "home": "/Library/Java/JavaVirtualMachines/temurin-21.jdk/Contents/Home",
+                "options": [
+                    "-Duser.dir=/Users/michaelyau/desk_booking/demon_butler/it"
+                ]
+            },
+            "mainClass": [
+                
+            ]
+        },
+        "resolution": {
+            "modules": [
+                {
+                    "organization": "org.scala-lang",
+                    "name": "scala3-library_3",
+                    "version": "3.3.4",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "scala3-library_3",
+                            "path": "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala3-library_3/3.3.4/scala3-library_3-3.3.4.jar"
+                        },
+                        {
+                            "name": "scala3-library_3",
+                            "classifier": "sources",
+                            "path": "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala3-library_3/3.3.4/scala3-library_3-3.3.4-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "ch.qos.logback",
+                    "name": "logback-classic",
+                    "version": "1.5.6",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "logback-classic",
+                            "path": "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/ch/qos/logback/logback-classic/1.5.6/logback-classic-1.5.6.jar"
+                        },
+                        {
+                            "name": "logback-classic",
+                            "classifier": "sources",
+                            "path": "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/ch/qos/logback/logback-classic/1.5.6/logback-classic-1.5.6-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "io.circe",
+                    "name": "circe-generic_3",
+                    "version": "0.14.7",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "circe-generic_3",
+                            "path": "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/io/circe/circe-generic_3/0.14.7/circe-generic_3-0.14.7.jar"
+                        },
+                        {
+                            "name": "circe-generic_3",
+                            "classifier": "sources",
+                            "path": "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/io/circe/circe-generic_3/0.14.7/circe-generic_3-0.14.7-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "io.circe",
+                    "name": "circe-core_3",
+                    "version": "0.14.7",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "circe-core_3",
+                            "path": "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/io/circe/circe-core_3/0.14.7/circe-core_3-0.14.7.jar"
+                        },
+                        {
+                            "name": "circe-core_3",
+                            "classifier": "sources",
+                            "path": "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/io/circe/circe-core_3/0.14.7/circe-core_3-0.14.7-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "io.circe",
+                    "name": "circe-parser_3",
+                    "version": "0.14.7",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "circe-parser_3",
+                            "path": "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/io/circe/circe-parser_3/0.14.7/circe-parser_3-0.14.7.jar"
+                        },
+                        {
+                            "name": "circe-parser_3",
+                            "classifier": "sources",
+                            "path": "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/io/circe/circe-parser_3/0.14.7/circe-parser_3-0.14.7-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "com.github.pureconfig",
+                    "name": "pureconfig-core_3",
+                    "version": "0.17.8",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "pureconfig-core_3",
+                            "path": "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/com/github/pureconfig/pureconfig-core_3/0.17.8/pureconfig-core_3-0.17.8.jar"
+                        },
+                        {
+                            "name": "pureconfig-core_3",
+                            "classifier": "sources",
+                            "path": "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/com/github/pureconfig/pureconfig-core_3/0.17.8/pureconfig-core_3-0.17.8-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "org.scala-lang",
+                    "name": "scala-library",
+                    "version": "2.13.14",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "scala-library",
+                            "path": "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/2.13.14/scala-library-2.13.14.jar"
+                        },
+                        {
+                            "name": "scala-library",
+                            "classifier": "sources",
+                            "path": "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/2.13.14/scala-library-2.13.14-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "org.slf4j",
+                    "name": "slf4j-api",
+                    "version": "2.0.13",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "slf4j-api",
+                            "path": "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/slf4j/slf4j-api/2.0.13/slf4j-api-2.0.13.jar"
+                        },
+                        {
+                            "name": "slf4j-api",
+                            "classifier": "sources",
+                            "path": "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/slf4j/slf4j-api/2.0.13/slf4j-api-2.0.13-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "ch.qos.logback",
+                    "name": "logback-core",
+                    "version": "1.5.6",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "logback-core",
+                            "path": "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/ch/qos/logback/logback-core/1.5.6/logback-core-1.5.6.jar"
+                        },
+                        {
+                            "name": "logback-core",
+                            "classifier": "sources",
+                            "path": "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/ch/qos/logback/logback-core/1.5.6/logback-core-1.5.6-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "io.circe",
+                    "name": "circe-numbers_3",
+                    "version": "0.14.7",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "circe-numbers_3",
+                            "path": "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/io/circe/circe-numbers_3/0.14.7/circe-numbers_3-0.14.7.jar"
+                        },
+                        {
+                            "name": "circe-numbers_3",
+                            "classifier": "sources",
+                            "path": "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/io/circe/circe-numbers_3/0.14.7/circe-numbers_3-0.14.7-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "io.circe",
+                    "name": "circe-jawn_3",
+                    "version": "0.14.7",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "circe-jawn_3",
+                            "path": "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/io/circe/circe-jawn_3/0.14.7/circe-jawn_3-0.14.7.jar"
+                        },
+                        {
+                            "name": "circe-jawn_3",
+                            "classifier": "sources",
+                            "path": "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/io/circe/circe-jawn_3/0.14.7/circe-jawn_3-0.14.7-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "com.typesafe",
+                    "name": "config",
+                    "version": "1.4.3",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "config",
+                            "path": "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/com/typesafe/config/1.4.3/config-1.4.3.jar"
+                        },
+                        {
+                            "name": "config",
+                            "classifier": "sources",
+                            "path": "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/com/typesafe/config/1.4.3/config-1.4.3-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "org.typelevel",
+                    "name": "jawn-parser_3",
+                    "version": "1.5.1",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "jawn-parser_3",
+                            "path": "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/typelevel/jawn-parser_3/1.5.1/jawn-parser_3-1.5.1.jar"
+                        },
+                        {
+                            "name": "jawn-parser_3",
+                            "classifier": "sources",
+                            "path": "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/typelevel/jawn-parser_3/1.5.1/jawn-parser_3-1.5.1-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "com.disneystreaming",
+                    "name": "weaver-cats_3",
+                    "version": "0.8.3",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "weaver-cats_3",
+                            "path": "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/com/disneystreaming/weaver-cats_3/0.8.3/weaver-cats_3-0.8.3.jar"
+                        },
+                        {
+                            "name": "weaver-cats_3",
+                            "classifier": "sources",
+                            "path": "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/com/disneystreaming/weaver-cats_3/0.8.3/weaver-cats_3-0.8.3-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "org.http4s",
+                    "name": "http4s-ember-client_3",
+                    "version": "0.23.28",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "http4s-ember-client_3",
+                            "path": "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/http4s/http4s-ember-client_3/0.23.28/http4s-ember-client_3-0.23.28.jar"
+                        },
+                        {
+                            "name": "http4s-ember-client_3",
+                            "classifier": "sources",
+                            "path": "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/http4s/http4s-ember-client_3/0.23.28/http4s-ember-client_3-0.23.28-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "com.disneystreaming",
+                    "name": "weaver-scalacheck_3",
+                    "version": "0.7.6",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "weaver-scalacheck_3",
+                            "path": "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/com/disneystreaming/weaver-scalacheck_3/0.7.6/weaver-scalacheck_3-0.7.6.jar"
+                        },
+                        {
+                            "name": "weaver-scalacheck_3",
+                            "classifier": "sources",
+                            "path": "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/com/disneystreaming/weaver-scalacheck_3/0.7.6/weaver-scalacheck_3-0.7.6-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "org.typelevel",
+                    "name": "log4cats-slf4j_3",
+                    "version": "2.7.0",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "log4cats-slf4j_3",
+                            "path": "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/typelevel/log4cats-slf4j_3/2.7.0/log4cats-slf4j_3-2.7.0.jar"
+                        },
+                        {
+                            "name": "log4cats-slf4j_3",
+                            "classifier": "sources",
+                            "path": "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/typelevel/log4cats-slf4j_3/2.7.0/log4cats-slf4j_3-2.7.0-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "org.typelevel",
+                    "name": "cats-core_3",
+                    "version": "2.11.0",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "cats-core_3",
+                            "path": "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/typelevel/cats-core_3/2.11.0/cats-core_3-2.11.0.jar"
+                        },
+                        {
+                            "name": "cats-core_3",
+                            "classifier": "sources",
+                            "path": "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/typelevel/cats-core_3/2.11.0/cats-core_3-2.11.0-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "org.typelevel",
+                    "name": "cats-effect_3",
+                    "version": "3.5.4",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "cats-effect_3",
+                            "path": "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/typelevel/cats-effect_3/3.5.4/cats-effect_3-3.5.4.jar"
+                        },
+                        {
+                            "name": "cats-effect_3",
+                            "classifier": "sources",
+                            "path": "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/typelevel/cats-effect_3/3.5.4/cats-effect_3-3.5.4-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "co.fs2",
+                    "name": "fs2-core_3",
+                    "version": "3.11.0",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "fs2-core_3",
+                            "path": "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/co/fs2/fs2-core_3/3.11.0/fs2-core_3-3.11.0.jar"
+                        },
+                        {
+                            "name": "fs2-core_3",
+                            "classifier": "sources",
+                            "path": "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/co/fs2/fs2-core_3/3.11.0/fs2-core_3-3.11.0-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "com.disneystreaming",
+                    "name": "weaver-framework_3",
+                    "version": "0.8.3",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "weaver-framework_3",
+                            "path": "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/com/disneystreaming/weaver-framework_3/0.8.3/weaver-framework_3-0.8.3.jar"
+                        },
+                        {
+                            "name": "weaver-framework_3",
+                            "classifier": "sources",
+                            "path": "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/com/disneystreaming/weaver-framework_3/0.8.3/weaver-framework_3-0.8.3-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "com.disneystreaming",
+                    "name": "weaver-cats-core_3",
+                    "version": "0.8.3",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "weaver-cats-core_3",
+                            "path": "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/com/disneystreaming/weaver-cats-core_3/0.8.3/weaver-cats-core_3-0.8.3.jar"
+                        },
+                        {
+                            "name": "weaver-cats-core_3",
+                            "classifier": "sources",
+                            "path": "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/com/disneystreaming/weaver-cats-core_3/0.8.3/weaver-cats-core_3-0.8.3-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "org.http4s",
+                    "name": "http4s-ember-core_3",
+                    "version": "0.23.28",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "http4s-ember-core_3",
+                            "path": "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/http4s/http4s-ember-core_3/0.23.28/http4s-ember-core_3-0.23.28.jar"
+                        },
+                        {
+                            "name": "http4s-ember-core_3",
+                            "classifier": "sources",
+                            "path": "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/http4s/http4s-ember-core_3/0.23.28/http4s-ember-core_3-0.23.28-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "org.http4s",
+                    "name": "http4s-client_3",
+                    "version": "0.23.28",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "http4s-client_3",
+                            "path": "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/http4s/http4s-client_3/0.23.28/http4s-client_3-0.23.28.jar"
+                        },
+                        {
+                            "name": "http4s-client_3",
+                            "classifier": "sources",
+                            "path": "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/http4s/http4s-client_3/0.23.28/http4s-client_3-0.23.28-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "org.typelevel",
+                    "name": "keypool_3",
+                    "version": "0.4.10",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "keypool_3",
+                            "path": "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/typelevel/keypool_3/0.4.10/keypool_3-0.4.10.jar"
+                        },
+                        {
+                            "name": "keypool_3",
+                            "classifier": "sources",
+                            "path": "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/typelevel/keypool_3/0.4.10/keypool_3-0.4.10-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "com.disneystreaming",
+                    "name": "weaver-core_3",
+                    "version": "0.8.3",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "weaver-core_3",
+                            "path": "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/com/disneystreaming/weaver-core_3/0.8.3/weaver-core_3-0.8.3.jar"
+                        },
+                        {
+                            "name": "weaver-core_3",
+                            "classifier": "sources",
+                            "path": "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/com/disneystreaming/weaver-core_3/0.8.3/weaver-core_3-0.8.3-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "org.scalacheck",
+                    "name": "scalacheck_3",
+                    "version": "1.15.4",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "scalacheck_3",
+                            "path": "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scalacheck/scalacheck_3/1.15.4/scalacheck_3-1.15.4.jar"
+                        },
+                        {
+                            "name": "scalacheck_3",
+                            "classifier": "sources",
+                            "path": "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scalacheck/scalacheck_3/1.15.4/scalacheck_3-1.15.4-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "org.typelevel",
+                    "name": "log4cats-core_3",
+                    "version": "2.7.0",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "log4cats-core_3",
+                            "path": "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/typelevel/log4cats-core_3/2.7.0/log4cats-core_3-2.7.0.jar"
+                        },
+                        {
+                            "name": "log4cats-core_3",
+                            "classifier": "sources",
+                            "path": "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/typelevel/log4cats-core_3/2.7.0/log4cats-core_3-2.7.0-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "org.typelevel",
+                    "name": "cats-kernel_3",
+                    "version": "2.11.0",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "cats-kernel_3",
+                            "path": "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/typelevel/cats-kernel_3/2.11.0/cats-kernel_3-2.11.0.jar"
+                        },
+                        {
+                            "name": "cats-kernel_3",
+                            "classifier": "sources",
+                            "path": "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/typelevel/cats-kernel_3/2.11.0/cats-kernel_3-2.11.0-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "org.typelevel",
+                    "name": "cats-effect-kernel_3",
+                    "version": "3.5.4",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "cats-effect-kernel_3",
+                            "path": "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/typelevel/cats-effect-kernel_3/3.5.4/cats-effect-kernel_3-3.5.4.jar"
+                        },
+                        {
+                            "name": "cats-effect-kernel_3",
+                            "classifier": "sources",
+                            "path": "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/typelevel/cats-effect-kernel_3/3.5.4/cats-effect-kernel_3-3.5.4-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "org.typelevel",
+                    "name": "cats-effect-std_3",
+                    "version": "3.5.4",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "cats-effect-std_3",
+                            "path": "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/typelevel/cats-effect-std_3/3.5.4/cats-effect-std_3-3.5.4.jar"
+                        },
+                        {
+                            "name": "cats-effect-std_3",
+                            "classifier": "sources",
+                            "path": "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/typelevel/cats-effect-std_3/3.5.4/cats-effect-std_3-3.5.4-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "org.scodec",
+                    "name": "scodec-bits_3",
+                    "version": "1.1.38",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "scodec-bits_3",
+                            "path": "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scodec/scodec-bits_3/1.1.38/scodec-bits_3-1.1.38.jar"
+                        },
+                        {
+                            "name": "scodec-bits_3",
+                            "classifier": "sources",
+                            "path": "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scodec/scodec-bits_3/1.1.38/scodec-bits_3-1.1.38-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "org.scala-sbt",
+                    "name": "test-interface",
+                    "version": "1.0",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "test-interface",
+                            "path": "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-sbt/test-interface/1.0/test-interface-1.0.jar"
+                        },
+                        {
+                            "name": "test-interface",
+                            "classifier": "sources",
+                            "path": "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-sbt/test-interface/1.0/test-interface-1.0-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "junit",
+                    "name": "junit",
+                    "version": "4.13.2",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "junit",
+                            "path": "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/junit/junit/4.13.2/junit-4.13.2.jar"
+                        },
+                        {
+                            "name": "junit",
+                            "classifier": "sources",
+                            "path": "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/junit/junit/4.13.2/junit-4.13.2-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "org.http4s",
+                    "name": "http4s-core_3",
+                    "version": "0.23.28",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "http4s-core_3",
+                            "path": "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/http4s/http4s-core_3/0.23.28/http4s-core_3-0.23.28.jar"
+                        },
+                        {
+                            "name": "http4s-core_3",
+                            "classifier": "sources",
+                            "path": "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/http4s/http4s-core_3/0.23.28/http4s-core_3-0.23.28-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "com.twitter",
+                    "name": "hpack",
+                    "version": "1.0.2",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "hpack",
+                            "path": "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/com/twitter/hpack/1.0.2/hpack-1.0.2.jar"
+                        },
+                        {
+                            "name": "hpack",
+                            "classifier": "sources",
+                            "path": "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/com/twitter/hpack/1.0.2/hpack-1.0.2-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "com.eed3si9n.expecty",
+                    "name": "expecty_3",
+                    "version": "0.16.0",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "expecty_3",
+                            "path": "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/com/eed3si9n/expecty/expecty_3/0.16.0/expecty_3-0.16.0.jar"
+                        },
+                        {
+                            "name": "expecty_3",
+                            "classifier": "sources",
+                            "path": "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/com/eed3si9n/expecty/expecty_3/0.16.0/expecty_3-0.16.0-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "org.portable-scala",
+                    "name": "portable-scala-reflect_2.13",
+                    "version": "1.1.2",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "portable-scala-reflect_2.13",
+                            "path": "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/portable-scala/portable-scala-reflect_2.13/1.1.2/portable-scala-reflect_2.13-1.1.2.jar"
+                        },
+                        {
+                            "name": "portable-scala-reflect_2.13",
+                            "classifier": "sources",
+                            "path": "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/portable-scala/portable-scala-reflect_2.13/1.1.2/portable-scala-reflect_2.13-1.1.2-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "org.scala-lang",
+                    "name": "scala-reflect",
+                    "version": "2.13.14",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "scala-reflect",
+                            "path": "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-reflect/2.13.14/scala-reflect-2.13.14.jar"
+                        },
+                        {
+                            "name": "scala-reflect",
+                            "classifier": "sources",
+                            "path": "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-reflect/2.13.14/scala-reflect-2.13.14-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "org.hamcrest",
+                    "name": "hamcrest-core",
+                    "version": "1.3",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "hamcrest-core",
+                            "path": "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar"
+                        },
+                        {
+                            "name": "hamcrest-core",
+                            "classifier": "sources",
+                            "path": "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "org.typelevel",
+                    "name": "case-insensitive_3",
+                    "version": "1.4.0",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "case-insensitive_3",
+                            "path": "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/typelevel/case-insensitive_3/1.4.0/case-insensitive_3-1.4.0.jar"
+                        },
+                        {
+                            "name": "case-insensitive_3",
+                            "classifier": "sources",
+                            "path": "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/typelevel/case-insensitive_3/1.4.0/case-insensitive_3-1.4.0-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "org.typelevel",
+                    "name": "cats-parse_3",
+                    "version": "1.0.0",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "cats-parse_3",
+                            "path": "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/typelevel/cats-parse_3/1.0.0/cats-parse_3-1.0.0.jar"
+                        },
+                        {
+                            "name": "cats-parse_3",
+                            "classifier": "sources",
+                            "path": "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/typelevel/cats-parse_3/1.0.0/cats-parse_3-1.0.0-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "org.http4s",
+                    "name": "http4s-crypto_3",
+                    "version": "0.2.4",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "http4s-crypto_3",
+                            "path": "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/http4s/http4s-crypto_3/0.2.4/http4s-crypto_3-0.2.4.jar"
+                        },
+                        {
+                            "name": "http4s-crypto_3",
+                            "classifier": "sources",
+                            "path": "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/http4s/http4s-crypto_3/0.2.4/http4s-crypto_3-0.2.4-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "co.fs2",
+                    "name": "fs2-io_3",
+                    "version": "3.11.0",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "fs2-io_3",
+                            "path": "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/co/fs2/fs2-io_3/3.11.0/fs2-io_3-3.11.0.jar"
+                        },
+                        {
+                            "name": "fs2-io_3",
+                            "classifier": "sources",
+                            "path": "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/co/fs2/fs2-io_3/3.11.0/fs2-io_3-3.11.0-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "com.comcast",
+                    "name": "ip4s-core_3",
+                    "version": "3.6.0",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "ip4s-core_3",
+                            "path": "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/com/comcast/ip4s-core_3/3.6.0/ip4s-core_3-3.6.0.jar"
+                        },
+                        {
+                            "name": "ip4s-core_3",
+                            "classifier": "sources",
+                            "path": "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/com/comcast/ip4s-core_3/3.6.0/ip4s-core_3-3.6.0-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "org.typelevel",
+                    "name": "literally_3",
+                    "version": "1.1.0",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "literally_3",
+                            "path": "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/typelevel/literally_3/1.1.0/literally_3-1.1.0.jar"
+                        },
+                        {
+                            "name": "literally_3",
+                            "classifier": "sources",
+                            "path": "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/typelevel/literally_3/1.1.0/literally_3-1.1.0-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "org.typelevel",
+                    "name": "vault_3",
+                    "version": "3.6.0",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "vault_3",
+                            "path": "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/typelevel/vault_3/3.6.0/vault_3-3.6.0.jar"
+                        },
+                        {
+                            "name": "vault_3",
+                            "classifier": "sources",
+                            "path": "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/typelevel/vault_3/3.6.0/vault_3-3.6.0-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "org.log4s",
+                    "name": "log4s_3",
+                    "version": "1.10.0",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "log4s_3",
+                            "path": "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/log4s/log4s_3/1.10.0/log4s_3-1.10.0.jar"
+                        },
+                        {
+                            "name": "log4s_3",
+                            "classifier": "sources",
+                            "path": "/Users/michaelyau/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/log4s/log4s_3/1.10.0/log4s_3-1.10.0-sources.jar"
+                        }
+                    ]
+                }
+            ]
+        },
+        "tags": [
+            "test"
+        ]
+    }
+}

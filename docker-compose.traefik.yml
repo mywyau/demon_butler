@@ -8,16 +8,23 @@ services:
       - "--api=true"
       - "--api.dashboard=true"
       - "--entrypoints.web.address=:80"
+      - "--entrypoints.websecure.address=:443"
       - "--providers.docker=true"
       - "--providers.docker.exposedbydefault=false"
     ports:
-      - "80:80"       # HTTP (Traefik routes requests)
-      - "8080:8080"   # Traefik Dashboard
+      - "80:80"
+      - "443:443"
+      - "8080:8080"
     volumes:
-      - "/var/run/docker.sock:/var/run/docker.sock" # Allow Traefik to interact with Docker
-      - "./traefik.yml:/etc/traefik/traefik.yml"    # Optional Traefik config
+      - "/var/run/docker.sock:/var/run/docker.sock"
+      - "./traefik.yml:/etc/traefik/traefik.yml"
     networks:
       - traefik-network
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.traefik-dashboard.rule=Host(`traefik.localhost`)"
+      - "traefik.http.routers.traefik-dashboard.service=api@internal"
+      - "traefik.http.routers.traefik-dashboard.entrypoints=web"
 
   wander-dev:
     build:
@@ -41,9 +48,9 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.reggie-dev.rule=Host(`reggie.localhost`)"
-      - "traefik.http.services.reggie-dev.loadbalancer.server.port=3000"
+      - "traefik.http.services.reggie-dev.loadbalancer.server.port=3002"
     networks:
-      - traefik-network
+      - traefik-network  
 
 networks:
   traefik-network:
