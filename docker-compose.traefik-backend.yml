@@ -9,7 +9,7 @@ services:
     container_name: pistachio-app
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.pistachio.rule=Host(`pistachio.localhost`)"
+      - "traefik.http.routers.pistachio.rule=Host(`pistachio.api`)"
       - "traefik.http.services.pistachio.loadbalancer.server.port=1011"
     networks:
       - traefik-network
@@ -22,7 +22,7 @@ services:
     container_name: cashew-app
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.cashew.rule=Host(`cashew.localhost`)"
+      - "traefik.http.routers.cashew.rule=Host(`cashew.api`)"
       - "traefik.http.services.cashew.loadbalancer.server.port=1010"
     networks:
       - traefik-network
