@@ -9,7 +9,7 @@ services:
     container_name: wander-dev
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.wander-dev.rule=Host(`localhost`) && PathPrefix(`/wander`)"
+      - "traefik.http.routers.wander-dev.rule=Host(`www.wander.com`) && PathPrefix(`/wander`)"
       - "traefik.http.services.wander-dev.loadbalancer.server.port=3000"
     networks:
       - traefik-network
@@ -22,7 +22,7 @@ services:
     container_name: reggie-dev
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.reggie-dev.rule=Host(`localhost`) && PathPrefix(`/reggie`)"
+      - "traefik.http.routers.reggie-dev.rule=Host(`www.wander.com`) && PathPrefix(`/reggie`)"
       - "traefik.http.services.reggie-dev.loadbalancer.server.port=3002"
     networks:
       - traefik-network
