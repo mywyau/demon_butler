@@ -67,17 +67,32 @@ sbt "demon list"
 
 Once we have built our service can run our frontend services in their containers. Reverse proxy is facilitated via Traefik. The goal is to help unify all the frontend microservices under a single base domain. This will allow us to pass cookies/headers for the JWT token for auth through the different micro frontends
 
-### Run traefik
+### Run all services 
 
 ```
-./run_traefik.sh  
+./run_all_services.sh  
 ```
 
 Dashboard is available at:
 
 ```
-localhost:8080/dashboard
+traefik.localhost
 ```
+
+### Stop all services 
+
+```
+./stop_all_services.sh  
+```
+
+### Clean up docker
+
+This will prune unused/non-running docker images, volumes and cache.
+
+```
+./cleanup_docker.sh.sh  
+```
+
 
 ### Modifying hosts on our local system 
 
@@ -98,16 +113,13 @@ We can then add our services new routes from traefik to the hosts file:
 ```
 127.0.0.1 wander.localhost
 127.0.0.1 reggie.localhost
+127.0.0.1 traefik.localhost
+127.0.0.1 pistachio.api
+127.0.0.1 cashew.api
 ```
 
 
 ## To view the traefik dashboard
 ```
 http://traefik.localhost/dashboard/#/
-```
-
-
-prune and clean up hanging images
-```
-docker image prune -f
 ```

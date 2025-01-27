@@ -13,6 +13,8 @@ services:
       - "traefik.http.services.wander-dev.loadbalancer.server.port=3000"
     networks:
       - traefik-network
+    env_file:
+      - ../frontend/wander/.env  # Path to your .env file
 
   reggie-dev:
     build:
@@ -26,6 +28,8 @@ services:
       - "traefik.http.services.reggie-dev.loadbalancer.server.port=3002"
     networks:
       - traefik-network
+    env_file:
+      - ../frontend/reggie/.env  # Path to your .env file
 
 networks:
   traefik-network:
