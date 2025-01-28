@@ -15,22 +15,6 @@ services:
       - traefik-network
     env_file:
       - ../frontend/wander/.env  # Path to your .env file
-
-  reggie-dev:
-    build:
-      context: ../frontend/reggie
-      dockerfile: Dockerfile.dev
-    image: reggie-dev:latest
-    container_name: reggie-dev
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.reggie-dev.rule=Host(`www.wander.com`) && PathPrefix(`/reggie`)"
-      - "traefik.http.services.reggie-dev.loadbalancer.server.port=3002"
-    networks:
-      - traefik-network
-    env_file:
-      - ../frontend/reggie/.env  # Path to your .env file
-
 networks:
   traefik-network:
     external: true

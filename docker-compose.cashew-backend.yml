@@ -1,0 +1,15 @@
+version: "3.9"
+
+services:
+  cashew-app:
+    build:
+      context: ../backend/cashew
+      dockerfile: Dockerfile
+    image: cashew-app
+    container_name: cashew-app
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.cashew.rule=Host(`cashew.api`)"
+      - "traefik.http.services.cashew.loadbalancer.server.port=1010"
+    networks:
+      - traefik-network
