@@ -15,6 +15,8 @@ services:
       - traefik-network
     env_file:
       - ../frontend/reggie/.env  # Path to your .env file
+    volumes:
+      - ../frontend/reggie:/app  # Mount local src directory to /app/src in the container
 
 networks:
   traefik-network:

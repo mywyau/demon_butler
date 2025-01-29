@@ -15,6 +15,12 @@ services:
       - traefik-network
     env_file:
       - ../frontend/wander/.env  # Path to your .env file
+    volumes:
+      - ../frontend/wander:/app  # Mount the entire app directory, not just src
+    ports:
+      - "3000:3000"  # Expose the port to access the app locally
+    command: "npm run dev"  # Ensure you're running Next.js in dev mode to watch for changes
+
 networks:
   traefik-network:
     external: true
